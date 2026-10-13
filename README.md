@@ -1,5 +1,7 @@
 # Deploy and Host nanobot with Railway
 
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/nanobot-v03-always-on-personal-ai-agent?referralCode=20H68q)
+
 Run nanobot, the lightweight open-source personal AI agent from HKUDS, around the clock on Railway. It answers you in its own web chat and in Telegram, Discord, Slack, WhatsApp and other chat apps, remembers what matters on a persistent volume, and runs scheduled tasks while you are away.
 
 ## About Hosting nanobot
