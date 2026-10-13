@@ -1,0 +1,148 @@
+{
+  "name": "nanobot v0.3 Always-On Personal AI Agent",
+  "description": "Lightweight AI agent that lives in your chat apps and runs 24/7.",
+  "category": "AI/ML",
+  "tags": [
+    "nanobot",
+    "ai-agent",
+    "personal-assistant",
+    "telegram",
+    "discord",
+    "slack",
+    "whatsapp",
+    "llm"
+  ],
+  "image": "https://cdn.jsdelivr.net/gh/HKUDS/nanobot@v0.3.5/images/nanobot_mark.svg",
+  "upstream": {
+    "repo": "HKUDS/nanobot",
+    "version": "v0.3.5",
+    "commit": "1bb712d3488915ca4ed9ccc1a93067ff722f5ab9",
+    "released": "2026-09-15",
+    "checked": "2026-10-13"
+  },
+  "services": {
+    "nanobot": {
+      "icon": "https://cdn.jsdelivr.net/gh/HKUDS/nanobot@v0.3.5/images/nanobot_mark.svg",
+      "source": {
+        "repo": "baranberkay96/nanobot-railway",
+        "rootDirectory": "/services/nanobot"
+      },
+      "startCommand": null,
+      "preDeployCommand": null,
+      "healthcheckPath": "/",
+      "healthcheckTimeout": 300,
+      "restartPolicyType": "ALWAYS",
+      "numReplicas": 1,
+      "cronSchedule": null,
+      "publicDomain": true,
+      "targetPort": 8765,
+      "tcpProxy": null,
+      "volume": {
+        "mountPath": "/home/nanobot/.nanobot"
+      },
+      "variables": {
+        "PORT": {
+          "defaultValue": "8765",
+          "description": "Port of the WebUI/WebSocket channel. Railway's healthcheck and public domain use it; keep 8765 unless you also change the domain's target port.",
+          "required": false
+        },
+        "NANOBOT_WEB_TOKEN": {
+          "defaultValue": "${{secret(32)}}",
+          "description": "WebUI password (upstream tokenIssueSecret), generated at deploy. Copy it from this variable and paste it on the WebUI login screen.",
+          "required": false
+        },
+        "OPENROUTER_API_KEY": {
+          "defaultValue": "",
+          "description": "Optional. OpenRouter key (openrouter.ai/keys): one key for Claude, GPT, Gemini and many more. You can also add any provider later in WebUI Settings > Models.",
+          "required": false
+        },
+        "ANTHROPIC_API_KEY": {
+          "defaultValue": "",
+          "description": "Optional. Anthropic API key. nanobot's stock default model (anthropic/claude-opus-4-5) runs on this key without further model setup.",
+          "required": false
+        },
+        "OPENAI_API_KEY": {
+          "defaultValue": "",
+          "description": "Optional. OpenAI API key. Also set LLM_MODEL (e.g. an OpenAI model ID) or pick a model in the WebUI.",
+          "required": false
+        },
+        "GEMINI_API_KEY": {
+          "defaultValue": "",
+          "description": "Optional. Google Gemini API key. Also set LLM_MODEL or pick a model in the WebUI.",
+          "required": false
+        },
+        "DEEPSEEK_API_KEY": {
+          "defaultValue": "",
+          "description": "Optional. DeepSeek API key. Also set LLM_MODEL or pick a model in the WebUI.",
+          "required": false
+        },
+        "GROQ_API_KEY": {
+          "defaultValue": "",
+          "description": "Optional. Groq API key (chat models and the default voice-message transcription provider).",
+          "required": false
+        },
+        "LLM_MODEL": {
+          "defaultValue": "",
+          "description": "Optional. Model ID as your provider names it (e.g. anthropic/claude-opus-4.5 on OpenRouter). When set it wins over the WebUI model on every restart; leave empty to choose in the WebUI.",
+          "required": false
+        },
+        "LLM_PROVIDER": {
+          "defaultValue": "",
+          "description": "Optional. Provider for LLM_MODEL (openrouter, anthropic, openai, gemini, deepseek, groq). Empty = auto-detect from the model ID and available keys.",
+          "required": false
+        },
+        "TELEGRAM_BOT_TOKEN": {
+          "defaultValue": "",
+          "description": "Optional. Telegram bot token from @BotFather; enables the Telegram channel. Channels can also be added later in WebUI Settings > Channels.",
+          "required": false
+        },
+        "TELEGRAM_ALLOW_FROM": {
+          "defaultValue": "",
+          "description": "Optional. Comma-separated Telegram user IDs that may talk to the bot. Empty = unknown users get a pairing code you approve in the WebUI.",
+          "required": false
+        },
+        "DISCORD_BOT_TOKEN": {
+          "defaultValue": "",
+          "description": "Optional. Discord bot token (Developer Portal > Bot, enable Message Content intent); enables the Discord channel.",
+          "required": false
+        },
+        "DISCORD_ALLOW_FROM": {
+          "defaultValue": "",
+          "description": "Optional. Comma-separated Discord user IDs allowed to talk to the bot. Empty = pairing codes.",
+          "required": false
+        },
+        "SLACK_BOT_TOKEN": {
+          "defaultValue": "",
+          "description": "Optional. Slack bot token (xoxb-...). Needs SLACK_APP_TOKEN too (Socket Mode, no public webhook needed).",
+          "required": false
+        },
+        "SLACK_APP_TOKEN": {
+          "defaultValue": "",
+          "description": "Optional. Slack app-level token (xapp-...) with connections:write, for Socket Mode.",
+          "required": false
+        },
+        "SLACK_ALLOW_FROM": {
+          "defaultValue": "",
+          "description": "Optional. Comma-separated Slack member IDs allowed to DM the bot. Empty = DM pairing codes.",
+          "required": false
+        },
+        "TZ": {
+          "defaultValue": "UTC",
+          "description": "IANA timezone the agent uses for dates, reminders and cron jobs (e.g. Europe/Istanbul).",
+          "required": false
+        },
+        "WEBUI_ALLOW_REMOTE_INSTALL": {
+          "defaultValue": "false",
+          "description": "true lets authenticated WebUI users install extra Python packages and marketplace skills. Common chat channels are preinstalled, so keep false unless you need more.",
+          "required": false
+        },
+        "RAILWAY_DEPLOYMENT_DRAINING_SECONDS": {
+          "defaultValue": "30",
+          "description": "Seconds the old container gets to finish running turns and flush session files before a redeploy stops it.",
+          "required": false
+        }
+      }
+    }
+  },
+  "buckets": []
+}
