@@ -1,10 +1,10 @@
-# nanobot v0.3 Always-On Personal AI Agent: Railway template spec
+# nanobot Always-On Personal AI Agent: Railway template spec
 
 ## Listing
 
 | Field | Value |
 |---|---|
-| Name | **nanobot v0.3 Always-On Personal AI Agent** (as assigned; `v0.3` = major.minor of the pinned `v0.3.5`, upstream spells the name in lowercase) |
+| Name | **nanobot Always-On Personal AI Agent** (as assigned; `v0.3` = major.minor of the pinned `v0.3.5`, upstream spells the name in lowercase) |
 | Description | Lightweight AI agent that lives in your chat apps and runs 24/7. (64 chars, unchanged) |
 | Category | AI/ML |
 | Tags | nanobot, ai-agent, personal-assistant, telegram, discord, slack, whatsapp, llm |

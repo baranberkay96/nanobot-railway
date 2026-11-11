@@ -1,5 +1,6 @@
 {
-  "name": "nanobot v0.3 Always-On Personal AI Agent",
+  "name": "nanobot Always-On Personal AI Agent",
+  "idSeed": "nanobot v0.3 Always-On Personal AI Agent",
   "description": "Lightweight AI agent that lives in your chat apps and runs 24/7.",
   "category": "AI/ML",
   "tags": [
